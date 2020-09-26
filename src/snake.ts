@@ -1,5 +1,5 @@
-import { SNAKE_SPEED as speed, draw as drawE, update as updateE } from "./snake-details.js";
-
+import { SNAKE_SPEED as speed, draw as drawSnake, update as updateSnake } from "./snake-details.js";
+import { update as updateFood, draw as drawFood } from "./food.js";
 let lastRenderTime: number = 0;
 const board = document.querySelector(".game-board");
 
@@ -26,9 +26,14 @@ function main(time) {
 window.requestAnimationFrame(main);
 
 function update() {
-  updateE();
+  updateSnake();
+  updateFood();
 }
 
 function draw() {
-  if (board !== null) drawE(board);
+  if (board !== null) {
+    board.innerHTML = "";
+    drawSnake(board);
+    drawFood(board);
+  }
 }
