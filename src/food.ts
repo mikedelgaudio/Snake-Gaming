@@ -1,3 +1,4 @@
+import { randomGridPosition } from "./grid.js";
 import { expandSnake, onSnake } from "./snake-details.js";
 
 let powerUp = { x: 10, y: 1 };
@@ -8,7 +9,7 @@ const EXPANSION_RATE = 1;
 export function update() {
   if (onSnake(powerUp)) {
     expandSnake(EXPANSION_RATE);
-    powerUp = { x: 20, y: 10 };
+    powerUp = getRandomPowerPosition();
   }
 }
 
@@ -18,4 +19,13 @@ export function draw(board) {
   powerUpPart.style.gridColumnStart = <string>(<unknown>powerUp.x);
   powerUpPart.classList.add("snake-power");
   board.appendChild(powerUpPart);
+}
+
+
+function getRandomPowerPosition(){
+  let newPowerPosition;
+  while (newPowerPosition == null || onSnake(newPowerPosition)) {
+    newPowerPosition = randomGridPosition();
+  }
+  return newPowerPosition;
 }
