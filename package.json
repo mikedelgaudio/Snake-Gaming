@@ -1,0 +1,17 @@
+{
+  "name": "Snake-Gaming",
+  "version": "1.0.0",
+  "description": "",
+  "main": "snake.js",
+  "scripts": {
+    "start": "node dist/snake.js",
+    "build": "tsc -p . && cp src/index.html dist/index.html && sass src/styles.scss dist/styles.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.26.11",
+    "typescript": "^4.0.3"
+  }
+}

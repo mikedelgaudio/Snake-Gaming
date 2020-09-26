@@ -1,0 +1,33 @@
+$main-bg: #000;
+$board-bg: #ccc;
+$snake-bg: #fff;
+$snake-power-bg: #ccca;
+
+body {
+  background-color: $main-bg;
+  height: 100vh;
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.game-board {
+  background-color: $board-bg;
+  height: 100vmin;
+  width: 100vmin;
+  display: grid;
+  grid-template-rows: repeat(21, 1fr);
+  grid-template-columns: repeat(21, 1fr);
+}
+
+.snake {
+  background-color: $snake-bg;
+  border: 0.25vmin solid #000;
+}
+
+.snake-power {
+  background-color: $snake-power-bg;
+  border: 0.25vmin solid #000;
+}
