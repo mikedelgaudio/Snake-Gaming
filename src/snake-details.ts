@@ -6,6 +6,7 @@ const snakey = [{ x: 11, y: 11 }];
 let newSegments: number = 0;
 
 export function update() {
+  addSnakePart();
   const input = getInput();
   for (let i = snakey.length - 2; i >= 0; i--) {
     // Move to wear the parent's original body part was
@@ -36,7 +37,7 @@ export function expandSnake(amount): void {
 
 /**
  * Determine if the snake and powerup are colliding
- * @param powerUpPosition where the food is located
+ * @param powerUpPosition where the powerUp is located
  */
 export function onSnake(powerUpPosition) {
   return snakey.some((part) => {
@@ -53,4 +54,13 @@ export function onSnake(powerUpPosition) {
  */
 function equalPositions(part, position): boolean {
   return part.x === position.x && part.y === position.y;
+}
+
+/**
+ * Take the very last element and duplicate to the end of the snake
+ */
+function addSnakePart() {
+  for (let i = 0; i < newSegments; i++) {
+    snakey.push({ ...snakey[snakey.length - 1] });
+  }
 }
