@@ -11,7 +11,7 @@ const board = document.querySelector(".game-board");
 function main(time) {
   // What is the current time to render frame
   window.requestAnimationFrame(main);
-  const secondSinceLastRender: number = (time - lastRenderTime) / 3000;
+  const secondSinceLastRender: number = (time - lastRenderTime) / 1000;
   // Number of seconds between each move
   if (secondSinceLastRender < 1 / speed) return;
   console.log("Render");

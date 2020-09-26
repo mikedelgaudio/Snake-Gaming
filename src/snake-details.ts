@@ -39,10 +39,19 @@ export function expandSnake(amount): void {
  * Determine if the snake and powerup are colliding
  * @param powerUpPosition where the powerUp is located
  */
-export function onSnake(powerUpPosition) {
-  return snakey.some((part) => {
+export function onSnake(powerUpPosition, {ignoreHead = false} = {} ) {
+  return snakey.some((part, index) => {
+    if(ignoreHead && index === 0) return false;
     return equalPositions(part, powerUpPosition);
   });
+}
+
+export function getSnakeHead(){
+  return snakey[0];
+}
+
+export function snakeIntersect(){
+  return onSnake(snakey[0], {ignoreHead: true});
 }
 
 /**
@@ -63,4 +72,6 @@ function addSnakePart() {
   for (let i = 0; i < newSegments; i++) {
     snakey.push({ ...snakey[snakey.length - 1] });
   }
+
+  newSegments = 0;
 }
