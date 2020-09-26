@@ -3,6 +3,7 @@ import { getInput } from "./input.js";
 export const SNAKE_SPEED: number = 8;
 
 const snakey = [{ x: 11, y: 11 }];
+let newSegments: number = 0;
 
 export function update() {
   const input = getInput();
@@ -25,4 +26,31 @@ export function draw(board): void {
   });
 }
 
-export function expandSnake(amount) {}
+/**
+ *
+ * @param amount expansion rate per power up
+ */
+export function expandSnake(amount): void {
+  newSegments += amount;
+}
+
+/**
+ * Determine if the snake and powerup are colliding
+ * @param powerUpPosition where the food is located
+ */
+export function onSnake(powerUpPosition) {
+  return snakey.some((part) => {
+    return equalPositions(part, powerUpPosition);
+  });
+}
+
+/**
+ * Helper functions if the part of the snake
+ * and the powerup position colide
+ * return true
+ * @param part part of the snake
+ * @param position a powerup position
+ */
+function equalPositions(part, position): boolean {
+  return part.x === position.x && part.y === position.y;
+}

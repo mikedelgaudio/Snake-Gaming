@@ -1,3 +1,5 @@
+import { expandSnake, onSnake } from "./snake-details.js";
+
 let food = { x: 10, y: 1 };
 
 // How big eating one power up
